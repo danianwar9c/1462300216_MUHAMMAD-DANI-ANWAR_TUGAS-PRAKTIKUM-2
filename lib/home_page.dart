@@ -1,29 +1,23 @@
 import 'package:flutter/material.dart';
 import 'doctor_list_page.dart';
-import 'appointment_page.dart';
-import 'profile_page.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({super.key});
-
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[100],
 
-      appBar: AppBar(title: const Text("Kategori Dokter"), centerTitle: true),
+      appBar: AppBar(
+        title: const Text("Kategori Dokter"),
+        centerTitle: true,
+      ),
 
       body: Padding(
         padding: const EdgeInsets.all(15),
 
-        child: Column(
+        child: ListView(
           children: [
             // DOKTER UMUM
             Card(
@@ -31,28 +25,27 @@ class _HomePageState extends State<HomePage> {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15),
               ),
-
               child: ListTile(
                 leading: const Icon(
                   Icons.medical_services,
                   color: Colors.blue,
                   size: 35,
                 ),
-
                 title: const Text(
                   "Dokter Umum",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-
                 trailing: const Icon(Icons.arrow_forward_ios),
-
                 onTap: () {
                   Navigator.push(
                     context,
-
                     MaterialPageRoute(
-                      builder: (context) =>
-                          const DoctorListPage(kategori: "Dokter Umum"),
+                      builder: (context) => const DoctorListPage(
+                        kategori: "Dokter Umum",
+                      ),
                     ),
                   );
                 },
@@ -67,24 +60,27 @@ class _HomePageState extends State<HomePage> {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15),
               ),
-
               child: ListTile(
-                leading: const Icon(Icons.masks, color: Colors.blue, size: 35),
-
+                leading: const Icon(
+                  Icons.masks,
+                  color: Colors.blue,
+                  size: 35,
+                ),
                 title: const Text(
                   "Dokter Gigi",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-
                 trailing: const Icon(Icons.arrow_forward_ios),
-
                 onTap: () {
                   Navigator.push(
                     context,
-
                     MaterialPageRoute(
-                      builder: (context) =>
-                          const DoctorListPage(kategori: "Dokter Gigi"),
+                      builder: (context) => const DoctorListPage(
+                        kategori: "Dokter Gigi",
+                      ),
                     ),
                   );
                 },
@@ -99,28 +95,27 @@ class _HomePageState extends State<HomePage> {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15),
               ),
-
               child: ListTile(
                 leading: const Icon(
                   Icons.child_care,
                   color: Colors.blue,
                   size: 35,
                 ),
-
                 title: const Text(
                   "Dokter Anak",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-
                 trailing: const Icon(Icons.arrow_forward_ios),
-
                 onTap: () {
                   Navigator.push(
                     context,
-
                     MaterialPageRoute(
-                      builder: (context) =>
-                          const DoctorListPage(kategori: "Dokter Anak"),
+                      builder: (context) => const DoctorListPage(
+                        kategori: "Dokter Anak",
+                      ),
                     ),
                   );
                 },
@@ -135,24 +130,27 @@ class _HomePageState extends State<HomePage> {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15),
               ),
-
               child: ListTile(
-                leading: const Icon(Icons.pets, color: Colors.blue, size: 35),
-
+                leading: const Icon(
+                  Icons.pets,
+                  color: Colors.blue,
+                  size: 35,
+                ),
                 title: const Text(
                   "Dokter Hewan",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-
                 trailing: const Icon(Icons.arrow_forward_ios),
-
                 onTap: () {
                   Navigator.push(
                     context,
-
                     MaterialPageRoute(
-                      builder: (context) =>
-                          const DoctorListPage(kategori: "Dokter Hewan"),
+                      builder: (context) => const DoctorListPage(
+                        kategori: "Dokter Hewan",
+                      ),
                     ),
                   );
                 },
@@ -160,50 +158,6 @@ class _HomePageState extends State<HomePage> {
             ),
           ],
         ),
-      ),
-
-      // BOTTOM NAVIGATION BAR
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: selectedIndex,
-
-        onTap: (index) {
-          setState(() {
-            selectedIndex = index;
-          });
-
-          // HOME
-          if (index == 0) {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => const HomePage()),
-            );
-          }
-          // JANJI TEMU
-          else if (index == 1) {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => const AppointmentPage()),
-            );
-          }
-          // PROFILE
-          else if (index == 2) {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => const ProfilePage()),
-            );
-          }
-        },
-
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-
-          BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_month),
-            label: "Janji",
-          ),
-
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
-        ],
       ),
     );
   }
